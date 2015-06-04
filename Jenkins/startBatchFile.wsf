@@ -1,0 +1,10 @@
+<job>
+     <script language="VBScript">
+         Option Explicit
+         On Error Resume Next
+         Dim WshShell
+         set WshShell=CreateObject("WScript.Shell")
+         WshShell.run "C:\apache-tomcat-7.0.62\bin\startup.bat"
+         WScript.Quit
+     </script>
+ </job>
