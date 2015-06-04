@@ -1,0 +1,36 @@
+package scripts;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class dbConnection {
+
+		 public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		
+	     String dbUrl = "jdbc:postgresql://localhost:5432/arkncc";
+		 String username = "arkncc";
+		 String password = "password";
+         String query    = "select userid from login;";
+         
+		 Class.forName("org.postgresql.Driver");
+		  
+	     Connection con = DriverManager.getConnection(dbUrl,username,password);
+			  
+		 System.out.println("Connected to database");
+			 
+		 Statement stmt =con.createStatement();
+			 
+		 ResultSet rs = stmt.executeQuery(query);
+			  
+		  while (rs.next()) {
+		      String uName = rs.getString(1);
+			  System.out.println(uName);
+			  }
+        con.close();
+		System.out.println("Connection closed");
+		
+		 }
+		
+}
